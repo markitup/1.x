@@ -162,11 +162,11 @@
 							return false;
 						}).click(function() {
 							return false;
-						}).mouseup(function() {
+						}).mousedown(function() {
 							if (button.call) {
 								eval(button.call)();
 							}
-							markup(button);
+							setTimeout(function() { markup(button) },1);
 							return false;
 						}).hover(function() {
 								$('> ul', this).show();
@@ -495,7 +495,7 @@
 						if (li.length !== 0) {
 							ctrlKey = false;
 							setTimeout(function() {
-								li.triggerHandler('mouseup');
+								li.triggerHandler('mousedown');
 							},1);
 							return false;
 						}
