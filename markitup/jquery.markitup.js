@@ -402,7 +402,7 @@
 					} else { // opera
 						caretPosition = textarea.selectionStart;
 					}
-				} else { // gecko
+				} else { // gecko & webkit
 					caretPosition = textarea.selectionStart;
 					selection = $$.val().substring(caretPosition, textarea.selectionEnd);
 				} 
@@ -473,7 +473,6 @@
 					} catch(e) {
 						sp = 0;
 					}	
-					var h = "test";
 					previewWindow.document.open();
 					previewWindow.document.write(data);
 					previewWindow.document.close();
@@ -495,7 +494,9 @@
 						li = $("a[accesskey="+String.fromCharCode(e.keyCode)+"]", header).parent('li');
 						if (li.length !== 0) {
 							ctrlKey = false;
-							li.triggerHandler('mouseup');
+							setTimeout(function() {
+								li.triggerHandler('mouseup');
+							},1);
 							return false;
 						}
 					}
