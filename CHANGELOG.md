@@ -1,6 +1,11 @@
-markItUp! 1.1.6
+markItUp! 1.1.7
 
 CHANGE LOG
+markItUp! 1.1.7 2010-04-06
+- Fixed: Empty lines are removed at insertion on Webkit
+- Fixed: Focus lost when shortcut is used on FF
+- Fixed: var missing before $$ in markItUpRemove()
+
 markItUp! 1.1.6 2010-01-12
 - Improved: Ajax requests are now asynchronous
 - Fixed: Double empty line problem with preview and parsers
