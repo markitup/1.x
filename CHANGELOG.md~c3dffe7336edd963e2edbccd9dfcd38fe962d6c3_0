@@ -44,7 +44,7 @@ markItUp! 1.1.0 2008-05-04
 - Improved: Autorefreshing is now apply for preview in window too
 - Improved: Cancel button in prompt window cancel now the whole insertion process
 - Improved: Cleaner markItUp! code added to the DOM
-- Removed: Deprecated preview properties as previewBaseUrl, previewCharset, previewCssPath, previewBodyId, previewBodyClassName
+- Removed: Depreciated preview properties as previewBaseUrl, previewCharset, previewCssPath, previewBodyId, previewBodyClassName
 - Removed: Property previewIframe not longer exists
 - Fixed: "Magic markups" works with line feeds
 - Fixed: Key events are initialized after insertion
