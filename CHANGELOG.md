@@ -1,6 +1,10 @@
-markItUp! 1.1.7
+markItUp! 1.1.8
 
 CHANGE LOG
+markItUp! 1.1.8 xxxx
+- Improved: Some skin PNG have been optimized (lukescammell)
+- Fixed: Opera 10 selection bug (Marius G.)
+
 markItUp! 1.1.7 2010-04-06
 - Fixed: Empty lines are removed at insertion on Webkit
 - Fixed: Focus lost when shortcut is used on FF
