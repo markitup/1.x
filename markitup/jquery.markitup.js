@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------------
 // markItUp! Universal MarkUp Engine, JQuery plugin
-// v 1.1.7.x
+// v 1.1.x
 // Dual licensed under the MIT and GPL licenses.
 // ----------------------------------------------------------------------------
 // Copyright (C) 2007-2010 Jay Salvat
@@ -404,7 +404,7 @@
 					}
 				} else { // gecko & webkit
 					caretPosition = textarea.selectionStart;
-					selection = textarea.value.substring(caretPosition, textarea.selectionEnd);  // Thx Marius G.
+					selection = textarea.value.substring(caretPosition, textarea.selectionEnd);
 				} 
 				return selection;
 			}
@@ -424,7 +424,6 @@
 						previewWindow = iFrame[iFrame.length - 1].contentWindow || frame[iFrame.length - 1];
 					}
 				} else if (altKey === true) {
-					// Thx Stephen M. Redd for the IE8 fix
 					if (iFrame) {
 						iFrame.remove();
 					} else {
@@ -434,6 +433,9 @@
 				}
 				if (!options.previewAutoRefresh) {
 					refreshPreview(); 
+				}
+				if (options.previewInWindow) {
+					previewWindow.focus();
 				}
 			}
 
@@ -478,9 +480,6 @@
 					previewWindow.document.close();
 					previewWindow.document.documentElement.scrollTop = sp;
 				}
-				if (options.previewInWindow) {
-					previewWindow.focus();
-				}
 			}
 			
 			// set keys pressed
@@ -515,7 +514,7 @@
 						}
 					}
 					if (e.keyCode === 9) { // Tab key
-						if (shiftKey == true || ctrlKey == true || altKey == true) { // Thx Dr Floob.
+						if (shiftKey == true || ctrlKey == true || altKey == true) {
 							return false; 
 						}
 						if (caretOffset !== -1) {
