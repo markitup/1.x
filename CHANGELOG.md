@@ -5,6 +5,7 @@ markItUp! 1.1.8 xxxx
 - Improved: Some skin PNG have been optimized (lukescammell)
 - Fixed: Opera 10 selection bug (Marius G.)
 - Improved: Avoid giving the preview focus each time autorefresh kicks in. It still gets the focus when the preview button is pressed (DrSlump)
+- Improved: In pop-up mode the preview is closed when the page containing the editor is unloaded (DrSlump)
 
 markItUp! 1.1.7 2010-04-06
 - Fixed: Empty lines are removed at insertion on Webkit
