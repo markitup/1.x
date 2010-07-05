@@ -28,8 +28,7 @@
 	border:3px solid #3C769D;
 	width:643px;
 	height:320px;
-	background-image:url(images/bg-editor.png);
-	background-repeat:no-repeat;
+	background:#FFF url(images/bg-editor.png) no-repeat;
 	clear:both; display:block;
 	line-height:18px;
 	overflow:auto;
