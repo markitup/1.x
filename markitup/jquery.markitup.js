@@ -28,7 +28,7 @@
 	$.fn.markItUp = function(settings, extraSettings) {
 		var options, ctrlKey, shiftKey, altKey;
 		ctrlKey = shiftKey = altKey = false;
-
+	
 		options = {	id:						'',
 					nameSpace:				'',
 					root:					'',
@@ -162,6 +162,8 @@
 							return false;
 						}).click(function() {
 							return false;
+						}).focusin(function(){
+                            $$.focus();
 						}).mousedown(function() {
 							if (button.call) {
 								eval(button.call)();
