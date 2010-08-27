@@ -1,7 +1,7 @@
 markItUp! 1.1.8
 
 CHANGE LOG
-markItUp! 1.1.8 xxxx
+markItUp! 1.1.8 2010-08-27
 - Improved: Some skin PNG have been optimized (lukescammell)
 - Fixed: Opera 10 selection bug (Marius G.)
 - Fixed: Accessibility issue with the background default color in the default skin
