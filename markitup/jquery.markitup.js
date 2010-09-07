@@ -162,7 +162,7 @@
 							return false;
 						}).click(function() {
 							return false;
-						}).focusin(function(){
+						}).bind("focusin", function(){
                             $$.focus();
 						}).mousedown(function() {
 							if (button.call) {

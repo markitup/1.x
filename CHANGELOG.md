@@ -1,6 +1,9 @@
-markItUp! 1.1.8
+markItUp! 1.1.9
 
 CHANGE LOG
+markItUp! 1.1.9 xxxx-xx-xx
+- Improved: Replace focusin() by bind('focusin') to solve some backward compatibility issues (Nick B. C.)
+
 markItUp! 1.1.8 2010-08-27
 - Improved: Some skin PNG have been optimized (lukescammell)
 - Fixed: Opera 10 selection bug (Marius G.)
