@@ -1,8 +1,11 @@
 markItUp! 1.1.9
 
 CHANGE LOG
-markItUp! 1.1.9 xxxx-xx-xx
+markItUp! 1.1.9 2010-11-04
+- Improved: Selection accuracy in Internet Explorer
 - Improved: Replace focusin() by bind('focusin') to solve some backward compatibility issues (Nick B. C.)
+- Cosmetic: Add new logo
+- Cosmetic: Remove jQuery library and use CDN
 
 markItUp! 1.1.8 2010-08-27
 - Improved: Some skin PNG have been optimized (lukescammell)
