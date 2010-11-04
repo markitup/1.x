@@ -29,7 +29,7 @@
 	width:643px;
 	height:320px;
 	background:#FFF url(images/bg-editor.png) no-repeat;
-	clear:both; display:block;
+	clear:both;
 	line-height:18px;
 	overflow:auto;
 }
