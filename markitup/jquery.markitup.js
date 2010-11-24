@@ -458,22 +458,26 @@
 			function renderPreview() {		
 				var phtml;
 				if (options.previewParserPath !== '') {
-					$.ajax( {
+					$.ajax({
 						type: 'POST',
+						dataType: 'text',
+						global: false,
 						url: options.previewParserPath,
 						data: options.previewParserVar+'='+encodeURIComponent($$.val()),
 						success: function(data) {
 							writeInPreview( localize(data, 1) ); 
 						}
-					} );
+					});
 				} else {
 					if (!template) {
-						$.ajax( {
+						$.ajax({
 							url: options.previewTemplatePath,
+							dataType: 'text',
+							global: false,
 							success: function(data) {
 								writeInPreview( localize(data, 1).replace(/<!-- content -->/g, $$.val()) );
 							}
-						} );
+						});
 					}
 				}
 				return false;
