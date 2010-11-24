@@ -4,6 +4,7 @@ CHANGE LOG
 markItUp! 1.1.x 
 - Improved: Ajax property 'dataType' set to 'text'
 - Improved: Ajax property 'global' set to 'false'
+- Fixed: Ctrl+click selection problem
 
 markItUp! 1.1.9 2010-11-04
 - Improved: Selection accuracy in Internet Explorer
