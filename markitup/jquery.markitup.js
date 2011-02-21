@@ -300,16 +300,11 @@
 					len = string.block.length - string.openWith.length - string.closeWith.length;
 					len = len - (string.block.match(/ $/) ? 1 : 0);
 					len -= fixIeBug(string.block);
-				} else if (shiftKey === true) {
+				} else {
 					string = build(selection);
 					start = caretPosition;
 					len = string.block.length;
 					len -= fixIeBug(string.block);
-				} else {
-					string = build(selection);
-					start = caretPosition + string.block.length ;
-					len = 0;
-					start -= fixIeBug(string.block);
 				}
 				if ((selection === '' && string.replaceWith === '')) {
 					caretOffset += fixOperaBug(string.block);
