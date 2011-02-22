@@ -22,37 +22,12 @@ $(document).ready(function()	{
 	// Add markItUp! to your textarea in one line
 	// $('textarea').markItUp( { Settings }, { OptionalExtraSettings } );
 	$('#markItUp').markItUp(mySettings);
-	
-	// You can add content from anywhere in your page
-	// $.markItUp( { Settings } );	
-	$('.add').click(function() {
- 		$.markItUp( { 	openWith:'<opening tag>',
-						closeWith:'<\/closing tag>',
-						placeHolder:"New content"
-					}
-				);
- 		return false;
-	});
-	
-	// And you can add/remove markItUp! whenever you want
-	// $(textarea).markItUpRemove();
-	$('.toggle').click(function() {
-		if ($("#markItUp.markItUpEditor").length === 1) {
- 			$("#markItUp").markItUpRemove();
-			$("span", this).text("get markItUp! back");
-		} else {
-			$('#markItUp').markItUp(mySettings);
-			$("span", this).text("remove markItUp!");
-		}
- 		return false;
-	});
 });
 -->
 </script>
 <h1><a href="http://markitup.jaysalvat.com/">markItUp!</a></h1>
 <p><em><a href="http://www.jaysalvat.com">By Jay Salvat</a></em></p>
-<p>Downloads, examples and documentation at <a href="http://markitup.jaysalvat.com">http://markitup.jaysalvat.com</a>.</p>
-<p>Click <a href="#" class="add">this link to insert content</a> from anywhere in the page or <a href="#" class="toggle">this one to <span>remove markItUp!</span></a></p>
+<p>Indent + Outdent buttons tests</p>
 <p>
 <textarea id="markItUp" cols="80" rows="20">
 &lt;h1&gt;Welcome on markItUp!&lt;/h1&gt;
