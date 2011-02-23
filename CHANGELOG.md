@@ -1,6 +1,10 @@
-markItUp! 1.1.9
+markItUp! 1.1.11
 
 CHANGE LOG
+markItUp! 1.1.11 xxxx-xx-xx
+- Updated: jQuery 1.5
+- Added quotes to attribute selectors
+
 markItUp! 1.1.10 2011-02-20
 - Improved: Ajax property 'dataType' set to 'text'
 - Improved: Ajax property 'global' set to 'false'
