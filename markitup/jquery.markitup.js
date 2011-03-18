@@ -428,6 +428,7 @@
 						});
 					} else {
 						iFrame = $('<iframe class="markItUpPreviewFrame"></iframe>');
+						iFrame.height($(textarea).outerHeight());
 						if (options.previewPosition == 'after') {
 							iFrame.insertAfter(footer);
 						} else {
