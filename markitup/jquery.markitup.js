@@ -450,6 +450,19 @@
 					previewWindow.focus();
 				}
 			}
+			
+			function togglePreview() {
+				if (!previewWindow || previewWindow.closed) {
+					preview();
+				} else {
+					if (iFrame) {
+						iFrame.remove();
+					} else {
+						previewWindow.close();
+					}
+					previewWindow = iFrame = false;
+				}
+			}
 
 			// refresh Preview window
 			function refreshPreview() {
