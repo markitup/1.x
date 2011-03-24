@@ -520,7 +520,7 @@
 			function keyPressed(e) { 
 				shiftKey = e.shiftKey;
 				altKey = e.altKey;
-				ctrlKey = (!(e.altKey && e.ctrlKey)) ? e.ctrlKey : false;
+				ctrlKey = (!(e.altKey && e.ctrlKey)) ? e.ctrlKey || e.metaKey : false;
 
 				if (e.type === 'keydown') {
 					if (ctrlKey === true) {
