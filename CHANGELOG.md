@@ -4,6 +4,7 @@ CHANGE LOG
 markItUp! 1.1.11 xxxx-xx-xx
 - Updated: jQuery 1.5
 - Added quotes to attribute selectors
+- Tried to fix the endless IE caret position bug
 
 markItUp! 1.1.10 2011-02-20
 - Improved: Ajax property 'dataType' set to 'text'
