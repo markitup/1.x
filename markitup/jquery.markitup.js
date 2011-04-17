@@ -237,18 +237,37 @@
 				var placeHolder = prepare(clicked.placeHolder);
 				var replaceWith = prepare(clicked.replaceWith);
 				var closeWith 	= prepare(clicked.closeWith);
+				var multilineSupport = prepare(clicked.multilineSupport);
+				var openBlockWith = prepare(clicked.openBlockWith);
+				var closeBlockWith = prepare(clicked.closeBlockWith);
+
 				if (replaceWith !== "") {
 					block = openWith + replaceWith + closeWith;
 				} else if (selection === '' && placeHolder !== '') {
 					block = openWith + placeHolder + closeWith;
 				} else {
-					string = string || selection;						
-					if (string.match(/ $/)) {
-						block = openWith + string.replace(/ $/, '') + closeWith + ' ';
-					} else {
-						block = openWith + string + closeWith;
+					string = string || selection;
+
+					var lines = [string]
+					// Apply action to every line or on the whole block?
+					if (multilineSupport == 'true')
+					    lines = string.replace(/\n+$/, '').split("\n")
+					
+					var blocks = [];
+					for (var l=0; l < lines.length; l++) {
+					  line = lines[l];
+					  if (line.match(/ +$/)) {
+					    blocks.push(openWith + line.replace(/ $/, '') + closeWith + ' ');
+					  } else {
+					    blocks.push(openWith + line + closeWith);
+					  }
 					}
+					
+					block = blocks.join("\n");
 				}
+
+				block = openBlockWith + block + closeBlockWith;
+
 				return {	block:block, 
 							openWith:openWith, 
 							replaceWith:replaceWith, 
