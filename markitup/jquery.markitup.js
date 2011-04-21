@@ -3,7 +3,7 @@
 // v 1.1.x
 // Dual licensed under the MIT and GPL licenses.
 // ----------------------------------------------------------------------------
-// Copyright (C) 2007-2010 Jay Salvat
+// Copyright (C) 2007-2011 Jay Salvat
 // http://markitup.jaysalvat.com/
 // ----------------------------------------------------------------------------
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -295,12 +295,12 @@
 				// callbacks before insertion
 				prepare(options.beforeInsert);
 				prepare(clicked.beforeInsert);
-				if (ctrlKey === true && shiftKey === true) {
+				if ((ctrlKey === true && shiftKey === true) || button.multiline === true) {
 					prepare(clicked.beforeMultiInsert);
 				}			
 				$.extend(hash, { line:1 });
 				
-				if (ctrlKey === true && shiftKey === true) {
+				if ((ctrlKey === true && shiftKey === true) || button.multiline === true) {
 					lines = selection.split(/\r?\n/);
 					for (j = 0, n = lines.length, i = 0; i < n; i++) {
 						if ($.trim(lines[i]) !== '') {
