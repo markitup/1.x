@@ -233,14 +233,14 @@
 
 			// build block to insert
 			function build(string) {
-				var openWith 	= prepare(clicked.openWith);
-				var placeHolder = prepare(clicked.placeHolder);
-				var replaceWith = prepare(clicked.replaceWith);
-				var closeWith 	= prepare(clicked.closeWith);
-				var multilineSupport = prepare(clicked.multilineSupport);
-				var openBlockWith = prepare(clicked.openBlockWith);
-				var closeBlockWith = prepare(clicked.closeBlockWith);
-
+				var openWith 			= prepare(clicked.openWith);
+				var placeHolder 		= prepare(clicked.placeHolder);
+				var replaceWith 		= prepare(clicked.replaceWith);
+				var closeWith 			= prepare(clicked.closeWith);
+				var openBlockWith 		= prepare(clicked.openBlockWith);
+				var closeBlockWith 		= prepare(clicked.closeBlockWith);
+				var multiline 			= clicked.multiline;
+				
 				if (replaceWith !== "") {
 					block = openWith + replaceWith + closeWith;
 				} else if (selection === '' && placeHolder !== '') {
@@ -249,9 +249,9 @@
 					string = string || selection;
 
 					var lines = [string]
-					// Apply action to every line or on the whole block?
-					if (multilineSupport == 'true')
-					    lines = string.replace(/\n+$/, '').split("\n")
+					if (multiline == true) {
+						lines = string.replace(/\n+$/, '').split("\n")						
+					}
 					
 					var blocks = [];
 					for (var l=0; l < lines.length; l++) {
@@ -299,7 +299,7 @@
 				}			
 				$.extend(hash, { line:1 });
 				
-				if ((ctrlKey === true && shiftKey === true) || button.multiline === true) {
+				if ((ctrlKey === true && shiftKey === true)) {
 					lines = selection.split(/\r?\n/);
 					for (j = 0, n = lines.length, i = 0; i < n; i++) {
 						if ($.trim(lines[i]) !== '') {
@@ -351,7 +351,7 @@
 				$.extend(hash, { line:'', selection:selection });
 
 				// callbacks after insertion
-				if (ctrlKey === true && shiftKey === true) {
+				if ((ctrlKey === true && shiftKey === true) || button.multiline === true) {
 					prepare(clicked.afterMultiInsert);
 				}
 				prepare(clicked.afterInsert);
