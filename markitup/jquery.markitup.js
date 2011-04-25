@@ -249,9 +249,10 @@
 					string = string || selection;
 
 					var lines = [string]
-					if (multiline == true) {
-						lines = string.replace(/\n+$/, '').split("\n")						
-					}
+					// if (multiline == true) {
+					// 	lines = string.replace(/\n+$/, '').split("\n")						
+					// }
+					lines = selection.split(/\r?\n/);
 					
 					var blocks = [];
 					for (var l=0; l < lines.length; l++) {
