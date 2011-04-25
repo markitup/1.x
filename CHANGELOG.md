@@ -2,7 +2,8 @@ markItUp! 1.1.11
 
 CHANGE LOG
 markItUp! 1.1.11 xxxx-xx-xx
-- Updated: jQuery 1.5
+- Added multiline support (alevchuk)
+- Updated with jQuery 1.5.2
 - Added quotes to attribute selectors
 - Tried to fix the endless IE caret position bug
 - Added metakey support for Mac users (michal-krause)
