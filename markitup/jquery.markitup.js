@@ -248,20 +248,17 @@
 				} else {
 					string = string || selection;
 
-					var lines = [string]
-					// if (multiline == true) {
-					// 	lines = string.replace(/\n+$/, '').split("\n")						
-					// }
-					lines = selection.split(/\r?\n/);
-					
-					var blocks = [];
+					var lines = selection.split(/\r?\n/), blocks = [];
 					for (var l=0; l < lines.length; l++) {
-					  line = lines[l];
-					  if (line.match(/ +$/)) {
-					    blocks.push(openWith + line.replace(/ $/, '') + closeWith + ' ');
-					  } else {
-					    blocks.push(openWith + line + closeWith);
-					  }
+						line = lines[l];
+						if ($.trim(line) == '') {
+							continue;
+						}
+						if (line.match(/ +$/)) {
+							blocks.push(openWith + line.replace(/ $/, '') + closeWith + ' ');
+						} else {
+							blocks.push(openWith + line + closeWith);
+						}
 					}
 					
 					block = blocks.join("\n");
