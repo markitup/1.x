@@ -296,7 +296,7 @@
 					prepare(clicked.beforeMultiInsert);
 				}			
 				$.extend(hash, { line:1 });
-				
+
 				if ((ctrlKey === true && shiftKey === true)) {
 					lines = selection.split(/\r?\n/);
 					for (j = 0, n = lines.length, i = 0; i < n; i++) {
