@@ -164,7 +164,7 @@
 							return false;
 						}).bind("focusin", function(){
                             $$.focus();
-						}).mousedown(function() {
+						}).mouseup(function() {
 							if (button.call) {
 								eval(button.call)();
 							}
@@ -281,7 +281,6 @@
 				var len, j, n, i;
 				hash = clicked = button;
 				get();
-
 				$.extend(hash, {	line:"", 
 						 			root:options.root,
 									textarea:textarea, 
@@ -431,6 +430,7 @@
 					}
 				} else { // gecko & webkit
 					caretPosition = textarea.selectionStart;
+
 					selection = textarea.value.substring(caretPosition, textarea.selectionEnd);
 				} 
 				return selection;
@@ -520,7 +520,7 @@
 			function keyPressed(e) { 
 				shiftKey = e.shiftKey;
 				altKey = e.altKey;
-				ctrlKey = (!(e.altKey && e.ctrlKey)) ? e.ctrlKey || e.metaKey : false;
+				ctrlKey = (!(e.altKey && e.ctrlKey)) ? (e.ctrlKey || e.metaKey) : false;
 
 				if (e.type === 'keydown') {
 					if (ctrlKey === true) {
@@ -528,7 +528,7 @@
 						if (li.length !== 0) {
 							ctrlKey = false;
 							setTimeout(function() {
-								li.triggerHandler('mousedown');
+								li.triggerHandler('mouseup');
 							},1);
 							return false;
 						}
