@@ -1,6 +1,10 @@
-markItUp! 1.1.11
+markItUp! 1.1.12
 
 CHANGE LOG
+markItUp! 1.1.12 2011-08-11
+- Fixed the insertion on empty selection
+- Enhanced the trailing space management
+
 markItUp! 1.1.11 2011-07-19
 - Enabled parsing the markup in javascript (amroth)
 - Added multiline support (alevchuk)
