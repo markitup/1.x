@@ -250,11 +250,9 @@
 					string = string || selection;
 
 					var lines = selection.split(/\r?\n/), blocks = [];
+					
 					for (var l=0; l < lines.length; l++) {
 						line = lines[l];
-						if ($.trim(line) == '') {
-							continue;
-						}
 						if (line.match(/ +$/)) {
 							blocks.push(openWith + line.replace(/ $/, '') + closeWith + ' ');
 						} else {
