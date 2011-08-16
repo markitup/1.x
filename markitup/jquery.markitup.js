@@ -249,9 +249,13 @@
 				} else {
 					string = string || selection;
 
-					var lines = selection.split(/\r?\n/), blocks = [];
+					var lines = [string], blocks = [];
 					
-					for (var l=0; l < lines.length; l++) {
+					if (multiline === true) {
+						lines = string.split(/\r?\n/);
+					}
+					
+					for (var l = 0; l < lines.length; l++) {
 						line = lines[l];
 						var trailingSpaces;
 						if (trailingSpaces = line.match(/ *$/)) {
@@ -307,6 +311,7 @@
 							lines[i] = "";
 						}
 					}
+
 					string = { block:lines.join('\n')};
 					start = caretPosition;
 					len = string.block.length + (($.browser.opera) ? n-1 : 0);
