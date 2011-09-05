@@ -448,7 +448,7 @@
 							previewWindow.close();
 						});
 					} else {
-						iFrame = $('<iframe class="markItUpPreviewFrame"></iframe>');
+						iFrame = $('<iframe id="preview" class="markItUpPreviewFrame"></iframe>');
 						if (options.previewPosition == 'after') {
 							iFrame.insertAfter(footer);
 						} else {
