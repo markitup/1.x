@@ -185,6 +185,15 @@
 							levels.push(i);
 							$(li).addClass('markItUpDropMenu').append(dropMenus(button.dropMenu));
 						}
+
+                        if (button.key == 'p') {
+                            var inp = $('<input id="mkd-input-file" class="hide" type="file" multiple="" />').insertAfter(li);
+                            li.unbind('click').click(function() {
+                                inp.click();
+                                return false;
+                            });
+                            li.unbind('mouseup');
+                        }
 					}
 				}); 
 				levels.pop();
