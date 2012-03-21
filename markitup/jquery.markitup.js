@@ -477,7 +477,7 @@
  				renderPreview();
 			}
 
-			function renderPreview() {		
+			function renderPreview() {
 				var phtml;
 				if (options.previewParser && typeof options.previewParser === 'function') {
 					var data = options.previewParser( $$.val() );
@@ -571,6 +571,10 @@
 				}
 			}
 
+			$.fn.markItUpExec = function(myfunc) {
+				eval(myfunc + "()");
+			}
+
 			init();
 		});
 	};
@@ -595,4 +599,5 @@
 			$('textarea').trigger('insertion', [options]);
 		}
 	};
+
 })(jQuery);
