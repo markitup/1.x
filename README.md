@@ -11,6 +11,7 @@ Currently:
 - Markdown Extra set & PHP parser
 - Markdown set & PHP parser (Planning to replace with a js variant like [pagedown][pd] or [markdown-js][mjs])
 - Textile set & PHP parser (Planning to implement js variant like [JQtextile][jqt]).
+- Wiki set & PHP parser
 
 [pd]: http://code.google.com/p/pagedown/
 [mjs]: https://github.com/evilstreak/markdown-js
