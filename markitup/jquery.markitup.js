@@ -40,7 +40,6 @@
 					previewParser:			false,
 					previewParserPath:		'',
 					previewParserVar:		'data',
-					previewScroll:			'bottom', // top, bottom
 					resizeHandle:			true,
 					beforeInsert:			'',
 					afterInsert:			'',
@@ -185,15 +184,6 @@
 						if (button.dropMenu) {
 							levels.push(i);
 							$(li).addClass('markItUpDropMenu').append(dropMenus(button.dropMenu));
-						}
-
-						if (button.key == 'p') {
-							var inp = $('<input id="mkd-input-file" class="hide" type="file" multiple="" />').insertAfter(li);
-							li.unbind('click').click(function() {
-								inp.click();
-								return false;
-							});
-							li.unbind('mouseup');
 						}
 					}
 				}); 
@@ -524,18 +514,14 @@
 			
 			function writeInPreview(data) {
 				if (previewWindow.document) {			
-					previewWindow.document.open();
-					previewWindow.document.write(data);
-					previewWindow.document.close();
-
 					try {
-						if (options.previewScroll == 'bottom')
-							sp = previewWindow.document.documentElement.scrollHeight;
-						else
-							sp = previewWindow.document.documentElement.scrollTop
+						sp = previewWindow.document.documentElement.scrollTop
 					} catch(e) {
 						sp = 0;
 					}	
+					previewWindow.document.open();
+					previewWindow.document.write(data);
+					previewWindow.document.close();
 					previewWindow.document.documentElement.scrollTop = sp;
 				}
 			}
