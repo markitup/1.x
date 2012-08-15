@@ -1,0 +1,83 @@
+WikiParser stress tester. <br /> Testing...
+__TOC__
+
+== Nowiki test ==
+<nowiki>[[wooticles|narf]] and '''test''' and stuff.</nowiki>
+
+== Character formatting ==
+This is ''emphasized'', this is '''really emphasized''', this is ''''grossly emphasized'''',
+This is imbalanced right ''emphasized'''
+This is imbalanced left '''emphasized''
+and this is just '''''freeking insane'''''.
+No End '''NO END
+Done.
+
+== Variables ==
+{{CURRENTDAY}}/{{CURRENTMONTH}}/{{CURRENTYEAR}}
+Done.
+
+== Image test ==
+[[:Image:bao1.jpg]]
+[[Image:bao1.jpg|frame|alternate text]]
+[[Image:bao1.jpg|right|alternate text]]
+Done.
+
+== Horizontal Rule ==
+Above the rule.
+----
+Done.
+
+== Hyperlink test ==
+This is a [[namespace:link target|bitchin hypalink]] to another document for [[click]]ing, with [[(some) hidden text]] and a [[namespace:hidden namespace]].
+
+A link to an external site [http://www.google.ca] as well another [http://www.esitemedia.com], and a [http://www.blitzaffe.com titled link] -- woo!
+Done.
+
+== Preformat ==
+Not preformatted.
+ Totally preformatted 01234    o o
+ Again, this is preformatted    b    <-- It's a face
+ Again, this is preformatted   ---'
+Done.
+        
+== Bullet test ==
+* One bullet
+* Another '''bullet'''
+*# a list item
+*# another list item
+*#* unordered, ordered, unordered
+*#* again
+*# back down one
+Done.
+
+== Definition list ==
+; yes : opposite of no
+; no : opposite of yes
+; maybe
+: somewhere in between yes and no
+Done.
+
+== Indent ==
+Normal
+: indented woo
+: more indentation
+Done.
+
+
+{| border="1" cellspacing="0" cellpadding="2"
+|-
+!scope="col"| Item
+!scope="col"| Quantity
+!scope="col"| Price
+|-
+!scope="row"| Bread
+| 0.3 kg
+| $0.65
+|-
+!scope="row"| Butter
+| 0.125 kg
+| $1.25
+|-
+!scope="row" colspan="2"| Total
+| $1.90
+|}
