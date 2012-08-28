@@ -384,7 +384,8 @@
 			}
 				
 			// add markup
-			function insert(block) {	
+			function insert(block) {
+				if (textarea.disabled) return false;
 				if (document.selection) {
 					var newSelection = document.selection.createRange();
 					newSelection.text = block;
