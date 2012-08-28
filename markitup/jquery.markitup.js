@@ -279,6 +279,7 @@
 
 			// define markup to insert
 			function markup(button) {
+				if (textarea.disabled) return false;
 				var len, j, n, i;
 				hash = clicked = button;
 				get();
@@ -385,7 +386,6 @@
 				
 			// add markup
 			function insert(block) {
-				if (textarea.disabled) return false;
 				if (document.selection) {
 					var newSelection = document.selection.createRange();
 					newSelection.text = block;
@@ -441,6 +441,7 @@
 
 			// open preview window
 			function preview() {
+				if (textarea.disabled) return false;
 				if (typeof options.previewHandler === 'function') {
 					previewWindow = true;
 				} else if (!previewWindow || previewWindow.closed) {
