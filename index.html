@@ -1,24 +1,36 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>markItUp! Universal markup editor</title>
-<link rel="stylesheet" type="text/css" href="images/style.css" />
-<!-- jQuery -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
-<!-- markItUp! -->
-<script type="text/javascript" src="markitup/jquery.markitup.js"></script>
-<!-- markItUp! toolbar settings -->
-<script type="text/javascript" src="markitup/sets/default/set.js"></script>
-<!-- markItUp! skin -->
-<link rel="stylesheet" type="text/css" href="markitup/skins/markitup/style.css" />
-<!--  markItUp! toolbar skin -->
-<link rel="stylesheet" type="text/css" href="markitup/sets/default/style.css" />
+	<meta charset="utf-8">
+	<title>markItUp! Universal markup editor</title>
+	<link rel="stylesheet" type="text/css" href="images/style.css">
+	<!-- markItUp! skin -->
+	<link rel="stylesheet" type="text/css" href="markitup/skins/markitup/style.css">
+	<!--  markItUp! toolbar skin -->
+	<link rel="stylesheet" type="text/css" href="markitup/sets/default/style.css">
+	<!-- jQuery -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+	<!-- markItUp! -->
+	<script type="text/javascript" src="markitup/jquery.markitup.js"></script>
+	<!-- markItUp! toolbar settings -->
+	<script type="text/javascript" src="markitup/sets/default/set.js"></script>
 </head>
 <body>
+<h1><a href="http://markitup.jaysalvat.com/">markItUp!</a></h1>
+<p><em><a href="http://www.jaysalvat.com">By Jay Salvat</a></em></p>
+<p>Downloads, examples and documentation at <a href="http://markitup.jaysalvat.com">http://markitup.jaysalvat.com</a>.</p>
+<p>Click <a href="#" class="add">this link to insert content</a> from anywhere in the page or <a href="#" class="toggle">this one to <span>remove markItUp!</span></a></p>
+<p>
+<textarea id="markItUp" cols="80" rows="20">
+&lt;h1&gt;Welcome on markItUp!&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;markItUp!&lt;/strong&gt; is a JavaScript plugin built on the jQuery library. It allows you to turn any textarea into a markup editor. Html, Textile, Wiki Syntax, Markdown, BBcode or even your own markup system can be easily implemented.&lt;/p&gt;
+</textarea>
+</p>
+<p>Support the project : <a href="http://markitup.jaysalvat.com/">Donate</a> | <a href="http://markitup.jaysalvat.com/">Contact</a></p>
+
 <script type="text/javascript">
-<!--
-$(document).ready(function()	{
+$(function()	{
 	// Add markItUp! to your textarea in one line
 	// $('textarea').markItUp( { Settings }, { OptionalExtraSettings } );
 	$('#markItUp').markItUp(mySettings);
@@ -47,19 +59,6 @@ $(document).ready(function()	{
  		return false;
 	});
 });
--->
 </script>
-<h1><a href="http://markitup.jaysalvat.com/">markItUp!</a></h1>
-<p><em><a href="http://www.jaysalvat.com">By Jay Salvat</a></em></p>
-<p>Downloads, examples and documentation at <a href="http://markitup.jaysalvat.com">http://markitup.jaysalvat.com</a>.</p>
-<p>Click <a href="#" class="add">this link to insert content</a> from anywhere in the page or <a href="#" class="toggle">this one to <span>remove markItUp!</span></a></p>
-<p>
-<textarea id="markItUp" cols="80" rows="20">
-&lt;h1&gt;Welcome on markItUp!&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;markItUp!&lt;/strong&gt; is a JavaScript plugin built on the jQuery library. It allows you to turn any textarea into a markup editor. Html, Textile, Wiki Syntax, Markdown, BBcode or even your own markup system can be easily implemented.&lt;/p&gt;
-</textarea>
-</p>
-<p>Support the project : <a href="http://markitup.jaysalvat.com/">Donate</a> | <a href="http://markitup.jaysalvat.com/">Contact</a></p>
 </body>
 </html>
