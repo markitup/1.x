@@ -32,15 +32,18 @@ $(function() {
 	// Add markItUp! to your textarea in one line
 	// $('textarea').markItUp( { Settings }, { OptionalExtraSettings } );
 	$('#markItUp').markItUp(mySettings);
-	
+
+
+
 	// You can add content from anywhere in your page
 	// $.markItUp( { Settings } );	
 	$('.add').click(function() {
- 		$.markItUp( { 	openWith:'<opening tag>',
-						closeWith:'<\/closing tag>',
-						placeHolder:"New content"
-					}
-				);
+ 		$('#markItUp').markItUp('insert',
+			{ 	openWith:'<opening tag>',
+				closeWith:'<\/closing tag>',
+				placeHolder:"New content"
+			}
+		);
  		return false;
 	});
 	
@@ -48,7 +51,7 @@ $(function() {
 	// $(textarea).markItUpRemove();
 	$('.toggle').click(function() {
 		if ($("#markItUp.markItUpEditor").length === 1) {
- 			$("#markItUp").markItUpRemove();
+ 			$("#markItUp").markItUp('remove');
 			$("span", this).text("get markItUp! back");
 		} else {
 			$('#markItUp').markItUp(mySettings);

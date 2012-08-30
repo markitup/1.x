@@ -26,9 +26,13 @@
 // ----------------------------------------------------------------------------
 (function($) {
 	$.fn.markItUp = function(settings, extraSettings) {
-		var options, ctrlKey, shiftKey, altKey;
-		ctrlKey = shiftKey = altKey = false;
-	
+		var method, params, options, ctrlKey, shiftKey, altKey; ctrlKey = shiftKey = altKey = false;
+
+		if (typeof settings == 'string') {
+			method = settings;
+			params = extraSettings;
+		} 
+
 		options = {	id:						'',
 					nameSpace:				'',
 					root:					'',
@@ -74,6 +78,20 @@
 
 			options.previewParserPath = localize(options.previewParserPath);
 			options.previewTemplatePath = localize(options.previewTemplatePath);
+
+			if (method) {
+				switch(method) {
+					case 'remove':
+						remove();
+					break;
+					case 'insert':
+						markup(params);
+					break;
+					default: 
+						$.error('Method ' +  method + ' does not exist on jQuery.markItUp');
+				}
+				return;
+			}
 
 			// apply the computed path to ~/
 			function localize(data, inText) {
@@ -522,7 +540,7 @@
 			function writeInPreview(data) {
 				if (options.previewInElement) {
 					$(options.previewInElement).html(data);
-				} else if (previewWindow.document) {			
+				} else if (previewWindow && previewWindow.document) {			
 					try {
 						sp = previewWindow.document.documentElement.scrollTop
 					} catch(e) {
@@ -584,14 +602,19 @@
 				}
 			}
 
+			function remove() {
+				$$.unbind(".markItUp").removeClass('markItUpEditor');
+				$$.parent('div').parent('div.markItUp').parent('div').replaceWith($$);
+				$$.data('markItUp', null);
+			}
+
 			init();
 		});
 	};
 
 	$.fn.markItUpRemove = function() {
 		return this.each(function() {
-				var $$ = $(this).unbind(".markItUp").removeClass('markItUpEditor');
-				$$.parent('div').parent('div.markItUp').parent('div').replaceWith($$);
+				$(this).markItUp('remove');
 			}
 		);
 	};

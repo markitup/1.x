@@ -6,8 +6,9 @@ markItUp! 1.1.12 2012-08-30
 - Fixed Ctrl+Enter syntax error (UltCombo)
 - Added the previewHandler option to allow complete control over preview (lecterror)
 - Updated events to use namespace (JoyceBabu)
+- Added $(elm).markItUp('insert', { }) and $(elm).markItUp('remove');
+- Updated the demo
 - Added package.json
-- Updated jQuery version to 1.8 in the demo
 
 markItUp! 1.1.12 2011-08-11
 - Fixed the insertion on empty selection
