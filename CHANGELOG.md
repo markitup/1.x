@@ -1,9 +1,14 @@
-markItUp! 1.1.11
+markItUp! 1.1.12
 
 CHANGE LOG
-markItUp! 1.1.11 xxxx-xx-xx
+markItUp! 1.1.12 2011-08-11
+- Fixed the insertion on empty selection
+- Enhanced the trailing space management
+
+markItUp! 1.1.11 2011-07-19
+- Enabled parsing the markup in javascript (amroth)
 - Added multiline support (alevchuk)
-- Updated with jQuery 1.5.2
+- Updated with jQuery 1.6.2
 - Added quotes to attribute selectors
 - Tried to fix the endless IE caret position bug
 - Added metakey support for Mac users (michal-krause)

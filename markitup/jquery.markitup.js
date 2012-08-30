@@ -32,10 +32,12 @@
 		options = {	id:						'',
 					nameSpace:				'',
 					root:					'',
+					previewHandler:			false,
 					previewInWindow:		'', // 'width=800, height=600, resizable=yes, scrollbars=yes'
 					previewAutoRefresh:		true,
 					previewPosition:		'after',
 					previewTemplatePath:	'~/templates/preview.html',
+					previewParser:			false,
 					previewParserPath:		'',
 					previewParserVar:		'data',
 					resizeHandle:			true,
@@ -108,26 +110,26 @@
 				if (options.resizeHandle === true && $.browser.safari !== true) {
 					resizeHandle = $('<div class="markItUpResizeHandle"></div>')
 						.insertAfter($$)
-						.bind("mousedown", function(e) {
+						.bind("mousedown.markItUp", function(e) {
 							var h = $$.height(), y = e.clientY, mouseMove, mouseUp;
 							mouseMove = function(e) {
 								$$.css("height", Math.max(20, e.clientY+h-y)+"px");
 								return false;
 							};
 							mouseUp = function(e) {
-								$("html").unbind("mousemove", mouseMove).unbind("mouseup", mouseUp);
+								$("html").unbind("mousemove.markItUp", mouseMove).unbind("mouseup.markItUp", mouseUp);
 								return false;
 							};
-							$("html").bind("mousemove", mouseMove).bind("mouseup", mouseUp);
+							$("html").bind("mousemove.markItUp", mouseMove).bind("mouseup.markItUp", mouseUp);
 					});
 					footer.append(resizeHandle);
 				}
 
 				// listen key events
-				$$.keydown(keyPressed).keyup(keyPressed);
+				$$.bind('keydown.markItUp', keyPressed).bind('keyup', keyPressed);
 				
 				// bind an event to catch external calls
-				$$.bind("insertion", function(e, settings) {
+				$$.bind("insertion.markItUp", function(e, settings) {
 					if (settings.target !== false) {
 						get();
 					}
@@ -137,7 +139,7 @@
 				});
 
 				// remember the last focus
-				$$.focus(function() {
+				$$.bind('focus.markItUp', function() {
 					$.markItUp.focused = this;
 				});
 			}
@@ -158,28 +160,27 @@
 							t += levels[j]+"-";
 						}
 						li = $('<li class="markItUpButton markItUpButton'+t+(i)+' '+(button.className||'')+'"><a href="" '+key+' title="'+title+'">'+(button.name||'')+'</a></li>')
-						.bind("contextmenu", function() { // prevent contextmenu on mac and allow ctrl+click
+						.bind("contextmenu.markItUp", function() { // prevent contextmenu on mac and allow ctrl+click
 							return false;
-						}).click(function() {
+						}).bind('click.markItUp', function() {
 							return false;
-						}).bind("focusin", function(){
+						}).bind("focusin.markItUp", function(){
                             $$.focus();
-						}).mouseup(function() {
+						}).bind('mouseup', function() {
 							if (button.call) {
 								eval(button.call)();
 							}
 							setTimeout(function() { markup(button) },1);
 							return false;
-						}).hover(function() {
+						}).bind('mouseenter.markItUp', function() {
 								$('> ul', this).show();
 								$(document).one('click', function() { // close dropmenu if click outside
 										$('ul ul', header).hide();
 									}
 								);
-							}, function() {
+						}).bind('mouseleave.markItUp', function() {
 								$('> ul', this).hide();
-							}
-						).appendTo(ul);
+						}).appendTo(ul);
 						if (button.dropMenu) {
 							levels.push(i);
 							$(li).addClass('markItUpDropMenu').append(dropMenus(button.dropMenu));
@@ -248,14 +249,17 @@
 				} else {
 					string = string || selection;
 
-					var lines = selection.split(/\r?\n/), blocks = [];
-					for (var l=0; l < lines.length; l++) {
+					var lines = [string], blocks = [];
+					
+					if (multiline === true) {
+						lines = string.split(/\r?\n/);
+					}
+					
+					for (var l = 0; l < lines.length; l++) {
 						line = lines[l];
-						if ($.trim(line) == '') {
-							continue;
-						}
-						if (line.match(/ +$/)) {
-							blocks.push(openWith + line.replace(/ $/, '') + closeWith + ' ');
+						var trailingSpaces;
+						if (trailingSpaces = line.match(/ *$/)) {
+							blocks.push(openWith + line.replace(/ *$/g, '') + closeWith + trailingSpaces);
 						} else {
 							blocks.push(openWith + line + closeWith);
 						}
@@ -307,6 +311,7 @@
 							lines[i] = "";
 						}
 					}
+
 					string = { block:lines.join('\n')};
 					start = caretPosition;
 					len = string.block.length + (($.browser.opera) ? n-1 : 0);
@@ -436,7 +441,9 @@
 
 			// open preview window
 			function preview() {
-				if (!previewWindow || previewWindow.closed) {
+				if (typeof options.previewHandler === 'function') {
+					previewWindow = true;
+				} else if (!previewWindow || previewWindow.closed) {
 					if (options.previewInWindow) {
 						previewWindow = window.open('', 'preview', options.previewInWindow);
 						$(window).unload(function() {
@@ -472,9 +479,14 @@
  				renderPreview();
 			}
 
-			function renderPreview() {		
+			function renderPreview() {
 				var phtml;
-				if (options.previewParserPath !== '') {
+				if (options.previewHandler && typeof options.previewHandler === 'function') {
+					options.previewHandler( $$.val() );
+				} else if (options.previewParser && typeof options.previewParser === 'function') {
+					var data = options.previewParser( $$.val() );
+					writeInPreview( localize(data, 1) ); 
+				} else if (options.previewParserPath !== '') {
 					$.ajax({
 						type: 'POST',
 						dataType: 'text',
@@ -522,7 +534,7 @@
 
 				if (e.type === 'keydown') {
 					if (ctrlKey === true) {
-						li = $('a[accesskey="'+String.fromCharCode(e.keyCode)+'"]', header).parent('li');
+						li = $('a[accesskey="'+((e.keyCode == 13) ? '\\n' : String.fromCharCode(e.keyCode))+'"]', header).parent('li');
 						if (li.length !== 0) {
 							ctrlKey = false;
 							setTimeout(function() {
@@ -569,7 +581,7 @@
 
 	$.fn.markItUpRemove = function() {
 		return this.each(function() {
-				var $$ = $(this).unbind().removeClass('markItUpEditor');
+				var $$ = $(this).unbind(".markItUp").removeClass('markItUpEditor');
 				$$.parent('div').parent('div.markItUp').parent('div').replaceWith($$);
 			}
 		);
