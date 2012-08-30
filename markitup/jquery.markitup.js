@@ -34,6 +34,7 @@
 					root:					'',
 					previewHandler:			false,
 					previewInWindow:		'', // 'width=800, height=600, resizable=yes, scrollbars=yes'
+					previewInDiv:			'',
 					previewAutoRefresh:		true,
 					previewPosition:		'after',
 					previewTemplatePath:	'~/templates/preview.html',
@@ -443,6 +444,9 @@
 			function preview() {
 				if (typeof options.previewHandler === 'function') {
 					previewWindow = true;
+				} else if (options.previewInDiv) {
+					// previewWindow has to be something, why not current document?
+					previewWindow = document;
 				} else if (!previewWindow || previewWindow.closed) {
 					if (options.previewInWindow) {
 						previewWindow = window.open('', 'preview', options.previewInWindow);
@@ -513,7 +517,9 @@
 			}
 			
 			function writeInPreview(data) {
-				if (previewWindow.document) {			
+				if (options.previewInDiv) {
+					document.getElementById(options.previewInDiv).innerHTML=data;
+				} else if (previewWindow.document) {			
 					try {
 						sp = previewWindow.document.documentElement.scrollTop
 					} catch(e) {
