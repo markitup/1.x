@@ -34,6 +34,7 @@
 					root:					'',
 					previewHandler:			false,
 					previewInWindow:		'', // 'width=800, height=600, resizable=yes, scrollbars=yes'
+					previewInElement:		'',
 					previewAutoRefresh:		true,
 					previewPosition:		'after',
 					previewTemplatePath:	'~/templates/preview.html',
@@ -142,6 +143,10 @@
 				$$.bind('focus.markItUp', function() {
 					$.markItUp.focused = this;
 				});
+
+				if (options.previewInElement) {
+					refreshPreview();
+				}
 			}
 
 			// recursively build header with dropMenus from markupset
@@ -443,6 +448,8 @@
 			function preview() {
 				if (typeof options.previewHandler === 'function') {
 					previewWindow = true;
+				} else if (options.previewInElement) {
+					previewWindow = $(options.previewInElement);
 				} else if (!previewWindow || previewWindow.closed) {
 					if (options.previewInWindow) {
 						previewWindow = window.open('', 'preview', options.previewInWindow);
@@ -485,7 +492,7 @@
 					options.previewHandler( $$.val() );
 				} else if (options.previewParser && typeof options.previewParser === 'function') {
 					var data = options.previewParser( $$.val() );
-					writeInPreview( localize(data, 1) ); 
+					writeInPreview(localize(data, 1) ); 
 				} else if (options.previewParserPath !== '') {
 					$.ajax({
 						type: 'POST',
@@ -513,7 +520,9 @@
 			}
 			
 			function writeInPreview(data) {
-				if (previewWindow.document) {			
+				if (options.previewInElement) {
+					$(options.previewInElement).html(data);
+				} else if (previewWindow.document) {			
 					try {
 						sp = previewWindow.document.documentElement.scrollTop
 					} catch(e) {

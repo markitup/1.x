@@ -2,6 +2,7 @@ markItUp! 1.1.13
 
 CHANGE LOG
 markItUp! 1.1.12 2012-08-30
+- Added ability to render preview in a DOM element (ytjohn & jaysalvat)
 - Fixed Ctrl+Enter syntax error (UltCombo)
 - Added the previewHandler option to allow complete control over preview (lecterror)
 - Updated events to use namespace (JoyceBabu)
