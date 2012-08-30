@@ -1,6 +1,13 @@
-markItUp! 1.1.12
+markItUp! 1.1.13
 
 CHANGE LOG
+markItUp! 1.1.12 2012-08-30
+- Fixed Ctrl+Enter syntax error (UltCombo)
+- Added the previewHandler option to allow complete control over preview (lecterror)
+- Updated events to use namespace (JoyceBabu)
+- Added package.json
+- Updated jQuery version to 1.8 in the demo
+
 markItUp! 1.1.12 2011-08-11
 - Fixed the insertion on empty selection
 - Enhanced the trailing space management
