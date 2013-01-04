@@ -294,10 +294,12 @@
 				block = openBlockWith + block + closeBlockWith;
 
 				return {	block:block, 
+							openBlockWith:openBlockWith,
 							openWith:openWith, 
 							replaceWith:replaceWith, 
 							placeHolder:placeHolder,
-							closeWith:closeWith
+							closeWith:closeWith,
+							closeBlockWith:closeBlockWith
 					};
 			}
 
@@ -358,8 +360,8 @@
 				if ((selection === '' && string.replaceWith === '')) {
 					caretOffset += fixOperaBug(string.block);
 					
-					start = caretPosition + string.openWith.length;
-					len = string.block.length - string.openWith.length - string.closeWith.length;
+					start = caretPosition + string.openBlockWith.length + string.openWith.length;
+					len = string.block.length - string.openBlockWith.length - string.openWith.length - string.closeWith.length - string.closeBlockWith.length;
 
 					caretOffset = $$.val().substring(caretPosition,  $$.val().length).length;
 					caretOffset -= fixOperaBug($$.val().substring(0, caretPosition));
