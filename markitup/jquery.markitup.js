@@ -185,8 +185,8 @@
 						li = $('<li class="markItUpButton markItUpButton'+t+(i)+' '+(button.className||'')+'"><a href="" '+key+' title="'+title+'">'+(button.name||'')+'</a></li>')
 						.bind("contextmenu.markItUp", function() { // prevent contextmenu on mac and allow ctrl+click
 							return false;
-						}).bind('click.markItUp', function() {
-							return false;
+						}).bind('click.markItUp', function(e) {
+							e.preventDefault();
 						}).bind("focusin.markItUp", function(){
                             $$.focus();
 						}).bind('mouseup', function() {
