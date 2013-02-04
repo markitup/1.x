@@ -1,6 +1,11 @@
-markItUp! 1.1.13
+markItUp! 1.1.14
 
 CHANGE LOG
+markItUp! 1.1.14 2013-02-04
+- Compatibility patch for jQuery 1.9+
+- Click on menu bubbles up so it could be reused (michilehr)
+- Fixed default selection after using a tag having either openBlockWith or closeBlockWith (r3c)
+
 markItUp! 1.1.13 2012-08-30
 - Added ability to render preview in a DOM element (ytjohn & jaysalvat)
 - Fixed Ctrl+Enter syntax error (UltCombo)
