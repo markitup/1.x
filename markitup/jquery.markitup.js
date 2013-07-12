@@ -636,9 +636,12 @@
 			function remove() {
 				$$.unbind(".markItUp").removeClass('markItUpEditor');
 				$$.parent('div').parent('div.markItUp').parent('div').replaceWith($$);
-				var relative_ref = $$.parent('div').parent('div.markItUp').parent('div');
-				if (relative_ref.length)
-				    relative_ref.replaceWith($$);
+
+				var relativeRef = $$.parent('div').parent('div.markItUp').parent('div');
+				if (relativeRef.length) {
+				    relativeRef.replaceWith($$);
+				}
+				
 				$$.data('markItUp', null);
 			}
 
