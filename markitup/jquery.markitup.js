@@ -45,6 +45,7 @@
 					previewParser:			false,
 					previewParserPath:		'',
 					previewParserVar:		'data',
+					previewParserAjaxType:	'POST',
 					resizeHandle:			true,
 					beforeInsert:			'',
 					afterInsert:			'',
@@ -544,7 +545,7 @@
 					writeInPreview(localize(data, 1) ); 
 				} else if (options.previewParserPath !== '') {
 					$.ajax({
-						type: 'POST',
+						type: options.previewParserAjaxType,
 						dataType: 'text',
 						global: false,
 						url: options.previewParserPath,
