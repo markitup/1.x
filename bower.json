@@ -11,6 +11,6 @@
     "vendor"
   ],
   "dependencies": {
-    "jquery": "^1.4.2"
+    "jquery": ">=1.4.2 <3.0.0"
   }
 }
