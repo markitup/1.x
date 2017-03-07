@@ -1,4 +1,3 @@
-
 markItUp! Universal markup editor
 =================================
 
@@ -13,4 +12,4 @@ markItUp! is not meant to be a “Full-Features-Out-of-the-Box”-editor. Instea
 [http://markitup.jaysalvat.com/documentation/](http://markitup.jaysalvat.com/documentation/)
 
 **Examples:**
-[http://markitup.jaysalvat.com/examples/](http://markitup.jaysalvat.com/examples/)
+[http://markitup.jaysalvat.com/examples/](http://markitup.jaysalvat.com/examples/) 
