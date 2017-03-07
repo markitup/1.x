@@ -200,7 +200,6 @@
 			// recursively build header with dropMenus from markupset
 			function dropMenus(markupSet) {
 				var ul = $('<ul></ul>'), i = 0;
-				$('li:hover > ul', ul).css('display', 'block');
 				$.each(markupSet, function() {
 					var button = this, t = '', title, li, j;
 					button.title ? title = (button.key) ? (button.title||'')+' [Ctrl+'+button.key+']' : (button.title||'') : title = (button.key) ? (button.name||'')+' [Ctrl+'+button.key+']' : (button.name||'');
@@ -335,6 +334,7 @@
 
 			// define markup to insert
 			function markup(button) {
+				if (textarea.disabled) return false;
 				var len, j, n, i;
 				hash = clicked = button;
 				get();
@@ -440,7 +440,7 @@
 			}
 				
 			// add markup
-			function insert(block) {	
+			function insert(block) {
 				if (document.selection) {
 					var newSelection = document.selection.createRange();
 					newSelection.text = block;
@@ -496,6 +496,7 @@
 
 			// open preview window
 			function preview() {
+				if (textarea.disabled) return false;
 				if (typeof options.previewHandler === 'function') {
 					previewWindow = true;
 				} else if (options.previewInElement) {
