@@ -419,6 +419,9 @@
 				if (previewWindow && options.previewAutoRefresh) {
 					refreshPreview(); 
 				}
+
+				// Triggers an input event to allow other scripts to react.
+				textarea.dispatchEvent(new Event('input'));
 																									
 				// reinit keyevent
 				shiftKey = altKey = ctrlKey = abort = false;
