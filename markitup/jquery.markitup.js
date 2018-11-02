@@ -516,7 +516,7 @@
 						} else {
 							iFrame.insertBefore(header);
 						}	
-						previewWindow = iFrame[iFrame.length - 1].contentWindow || frame[iFrame.length - 1];
+						previewWindow = iFrame[iFrame.length - 1].contentWindow || iFrame[iFrame.length - 1];
 					}
 				} else if (altKey === true) {
 					if (iFrame) {
