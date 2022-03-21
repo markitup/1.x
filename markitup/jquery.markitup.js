@@ -1,7 +1,7 @@
 // ----------------------------------------------------------------------------
 // markItUp! Universal MarkUp Engine, JQuery plugin
 // v 1.1.x
-// Dual licensed under the MIT and GPL licenses.
+// Dual licensed under the MIT or GPL licenses.
 // ----------------------------------------------------------------------------
 // Copyright (C) 2007-2012 Jay Salvat
 // http://markitup.jaysalvat.com/
